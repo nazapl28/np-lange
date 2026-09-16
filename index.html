@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>N. P. Lange</title>
+<meta name="description" content="N. P. Lange — ficção científica. O Protocolo Chiron, Livro 1: A Partida / The Chiron Protocol, Book One: Departure.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%AC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss: #4B5D3A;
+    --moss-dark: #35432A;
+    --moss-light: #6B7F55;
+    --beige: #EDE6D3;
+    --beige-dark: #DDD2B4;
+    --cream: #FAF7EF;
+    --ink: #262620;
+    --ink-soft: #55554A;
+    color-scheme: light;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  img{max-width:100%;}
+  [hidden]{display:none!important;}
+  h1,h2,h3{
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 .5em;
+    color: var(--moss-dark);
+  }
+  a{color: var(--moss-dark);}
+  .wrap{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  /* ---------- Nav ---------- */
+  header.site{
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 20;
+    background: rgba(250,247,239,.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--beige-dark);
+  }
+  .navbar{
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .brand{
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: .03em;
+    color: var(--moss-dark);
+    text-decoration: none;
+  }
+  .lang-toggle{
+    display: flex;
+    border: 1px solid var(--moss);
+    border-radius: 999px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .lang-toggle button{
+    border: 0;
+    background: transparent;
+    color: var(--moss-dark);
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: .8rem;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+  .lang-toggle button[aria-pressed="true"]{
+    background: var(--moss);
+    color: var(--cream);
+  }
+  /* ---------- Hero ---------- */
+  .hero{
+    background: linear-gradient(160deg, var(--moss) 0%, var(--moss-dark) 100%);
+    color: var(--cream);
+    padding: 72px 0 64px;
+    text-align: center;
+  }
+  .hero .wrap{ display:flex; flex-direction:column; align-items:center; }
+  .hero h1{
+    color: var(--cream);
+    font-size: clamp(2rem, 6vw, 3rem);
+    margin-bottom: .3em;
+  }
+  .hero .tagline{
+    font-size: 1.1rem;
+    max-width: 560px;
+    color: var(--beige);
+    margin: 0 auto;
+  }
+  .hero .series-pill{
+    display:inline-block;
+    margin-top: 22px;
+    padding: 7px 18px;
+    border: 1px solid rgba(250,247,239,.4);
+    border-radius: 999px;
+    font-size: .85rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--beige);
+  }
+  /* ---------- Sections ---------- */
+  section{
+    padding: 64px 0;
+  }
+  section.alt{
+    background: var(--beige);
+  }
+  .eyebrow{
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--moss);
+    margin-bottom: .6em;
+    display:block;
+  }
+  .lede{
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 640px;
+  }
+  /* ---------- Book card ---------- */
+  .book-card{
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  @media (max-width: 560px){
+    .book-card{ grid-template-columns: 1fr; }
+    .book-cover{ width: 140px; margin: 0 auto; }
+  }
+  .book-cover{
+    width: 160px;
+    aspect-ratio: 2/3;
+    border-radius: 6px;
+    background: linear-gradient(150deg, var(--moss-dark), var(--moss) 55%, var(--moss-light));
+    box-shadow: 0 14px 30px -12px rgba(38,38,32,.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 14px;
+    color: var(--beige);
+  }
+  .book-cover .bc-top{
+    font-size: .62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    opacity: .85;
+  }
+  .book-cover .bc-title{
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+  .book-cover .bc-author{
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .book-meta h3{ margin-bottom: .3em; }
+  .book-meta .subtitle{
+    display:block;
+    font-size: .85rem;
+    color: var(--ink-soft);
+    margin-bottom: .8em;
+    font-style: italic;
+  }
+  /* ---------- Contact ---------- */
+  .contact-box{
+    max-width: 520px;
+    margin: 0 auto;
+    background: var(--cream);
+    border: 1px solid var(--beige-dark);
+    border-radius: 10px;
+    padding: 32px;
+  }
+  form{ display:flex; flex-direction:column; gap:14px; margin-top: 18px; }
+  label{ font-size:.85rem; font-weight:600; color: var(--ink-soft); }
+  input, textarea{
+    width:100%;
+    font-family: inherit;
+    font-size: .95rem;
+    padding: 11px 13px;
+    border: 1px solid var(--beige-dark);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--ink);
+  }
+  input:focus, textarea:focus{
+    outline: 2px solid var(--moss-light);
+    outline-offset: 1px;
+  }
+  textarea{ min-height: 110px; resize: vertical; }
+  button.submit{
+    align-self: flex-start;
+    background: var(--moss);
+    color: var(--cream);
+    border: 0;
+    padding: 12px 26px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: .95rem;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  button.submit:hover{ background: var(--moss-dark); }
+  .form-note{
+    font-size: .78rem;
+    color: var(--ink-soft);
+    margin-top: 10px;
+  }
+  .form-success{
+    background: var(--beige);
+    border: 1px solid var(--moss-light);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: .9rem;
+    color: var(--moss-dark);
+  }
+  /* ---------- Footer ---------- */
+  footer{
+    padding: 32px 0 calc(32px + env(safe-area-inset-bottom, 0px));
+    text-align: center;
+    font-size: .8rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--beige-dark);
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="navbar">
+    <a class="brand" href="#top">N. P. Lange</a>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-set-lang="pt" aria-pressed="true">PT</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1>N. P. Lange</h1>
+    <p class="tagline" data-pt="Ficção científica sobre sobrevivência, ética médica e os limites do cuidado, entre as estrelas." data-en="Hard science fiction about survival, medical ethics, and the limits of care, among the stars.">Ficção científica sobre sobrevivência, ética médica e os limites do cuidado, entre as estrelas.</p>
+    <span class="series-pill" data-pt="Série · O Protocolo Chiron" data-en="Series · The Chiron Protocol">Série · O Protocolo Chiron</span>
+  </div>
+</section>
+
+<section id="series">
+  <div class="wrap">
+    <span class="eyebrow" data-pt="A série" data-en="The series">A série</span>
+    <h2 data-pt="O Protocolo Chiron" data-en="The Chiron Protocol">O Protocolo Chiron</h2>
+    <p class="lede" data-pt="A nave-colônia Odyssey deixa a Terra rumo a Chiron, um planeta em órbita de Alpha Centauri B, levando cento e cinco pessoas em uma missão de dezoito anos sem volta. No centro de tudo está Helena, a enfermeira que se torna a última linha de defesa entre a tripulação e o vazio — e a única pessoa a bordo que começa a perceber que nem tudo na missão é o que foi anunciado."
+       data-en="The colony ship Odyssey leaves Earth bound for Chiron, a planet orbiting Alpha Centauri B, carrying a hundred and five people on an eighteen-year mission with no way back. At the center of it all is Helena, the nurse who becomes the last line of defense between the crew and the void — and the only person aboard who starts to suspect the mission isn't quite what it was announced to be.">
+      A nave-colônia Odyssey deixa a Terra rumo a Chiron, um planeta em órbita de Alpha Centauri B, levando cento e cinco pessoas em uma missão de dezoito anos sem volta. No centro de tudo está Helena, a enfermeira que se torna a última linha de defesa entre a tripulação e o vazio — e a única pessoa a bordo que começa a perceber que nem tudo na missão é o que foi anunciado.
+    </p>
+  </div>
+</section>
+
+<section class="alt" id="book1">
+  <div class="wrap">
+    <span class="eyebrow" data-pt="Livro 1" data-en="Book One">Livro 1</span>
+    <h2 data-pt="O Protocolo Chiron — A Partida" data-en="The Chiron Protocol — Departure">O Protocolo Chiron — A Partida</h2>
+    <div class="book-card">
+      <div class="book-cover" aria-hidden="true">
+        <span class="bc-top" data-pt="O Protocolo Chiron" data-en="The Chiron Protocol">O Protocolo Chiron</span>
+        <span class="bc-title" data-pt="A Partida" data-en="Departure">A Partida</span>
+        <span class="bc-author">N. P. Lange</span>
+      </div>
+      <div class="book-meta">
+        <span class="subtitle" data-pt="Enfermeira. Sobrevivente. A última linha de defesa da Odyssey." data-en="Nurse. Survivor. The Odyssey's last line of defense.">Enfermeira. Sobrevivente. A última linha de defesa da Odyssey.</span>
+        <p class="lede" data-pt="Quando o único médico da Odyssey morre de repente, Helena passa a ser a única profissional de saúde disponível para cem colonos, a bordo de uma nave rumo a um planeta que ninguém nunca visitou. Antes que consiga se reorganizar, uma doença desconhecida começa a se espalhar pela nave — sem hospital de apoio, sem resgate possível, sem mais ninguém para chamar."
+           data-en="When the Odyssey's only doctor dies without warning, Helena becomes the sole health professional available for a hundred colonists, aboard a ship bound for a planet no one has ever set foot on. Before she can even catch her breath, an unknown disease starts spreading through the ship — no backup hospital, no rescue, no one else to call.">
+          Quando o único médico da Odyssey morre de repente, Helena passa a ser a única profissional de saúde disponível para cem colonos, a bordo de uma nave rumo a um planeta que ninguém nunca visitou. Antes que consiga se reorganizar, uma doença desconhecida começa a se espalhar pela nave — sem hospital de apoio, sem resgate possível, sem mais ninguém para chamar.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <span class="eyebrow" data-pt="Contato" data-en="Contact">Contato</span>
+      <h2 data-pt="Fale com o autor" data-en="Get in touch">Fale com o autor</h2>
+      <p class="lede" data-pt="Dúvidas, imprensa, direitos de tradução ou apenas um comentário sobre o livro — escreva abaixo." data-en="Questions, press, translation rights, or just a note about the book — write below.">Dúvidas, imprensa, direitos de tradução ou apenas um comentário sobre o livro — escreva abaixo.</p>
+
+      <form id="contact-form" action="https://formsubmit.co/nazapl@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Novo contato — np-lange.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div>
+          <label for="name" data-pt="Nome" data-en="Name">Nome</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div>
+          <label for="message" data-pt="Mensagem" data-en="Message">Mensagem</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button class="submit" type="submit" data-pt="Enviar" data-en="Send">Enviar</button>
+        <p class="form-note" data-pt="Seu e-mail vai direto para a caixa de entrada do autor. Nenhuma informação é armazenada neste site." data-en="Your message goes straight to the author's inbox. No information is stored on this site.">Seu e-mail vai direto para a caixa de entrada do autor. Nenhuma informação é armazenada neste site.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span data-pt="© 2026 N. P. Lange. Todos os direitos reservados." data-en="© 2026 N. P. Lange. All rights reserved.">© 2026 N. P. Lange. Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var buttons = document.querySelectorAll('[data-set-lang]');
+  function applyLang(lang){
+    document.documentElement.setAttribute('data-lang', lang);
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+    document.querySelectorAll('[data-' + lang + ']').forEach(function(el){
+      var val = el.getAttribute('data-' + lang);
+      if (val !== null) el.textContent = val;
+    });
+    buttons.forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang ? 'true' : 'false');
+    });
+    try { localStorage.setItem('npl-lang', lang); } catch(e) {}
+  }
+  buttons.forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-set-lang')); });
+  });
+  var saved = null;
+  try { saved = localStorage.getItem('npl-lang'); } catch(e) {}
+  if (saved === 'en') applyLang('en');
+})();
+</script>
+
+</body>
+</html>
