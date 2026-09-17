@@ -158,33 +158,21 @@
   }
   .book-cover{
     width: 160px;
-    aspect-ratio: 2/3;
+    aspect-ratio: 5/8;
     border-radius: 6px;
-    background: linear-gradient(150deg, var(--moss-dark), var(--moss) 55%, var(--moss-light));
+    overflow: hidden;
     box-shadow: 0 14px 30px -12px rgba(38,38,32,.4);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 16px 14px;
-    color: var(--beige);
+    background: var(--moss-dark);
   }
-  .book-cover .bc-top{
-    font-size: .62rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    opacity: .85;
+  .book-cover img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
-  .book-cover .bc-title{
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: 1.05rem;
-    line-height: 1.2;
-  }
-  .book-cover .bc-author{
-    font-size: .68rem;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-  }
+  .book-cover img.cover-en{ display: none; }
+  html[data-lang="en"] .book-cover img.cover-pt{ display: none; }
+  html[data-lang="en"] .book-cover img.cover-en{ display: block; }
   .book-meta h3{ margin-bottom: .3em; }
   .book-meta .subtitle{
     display:block;
@@ -291,10 +279,9 @@
     <span class="eyebrow" data-pt="Livro 1" data-en="Book One">Livro 1</span>
     <h2 data-pt="O Protocolo Chiron — A Partida" data-en="The Chiron Protocol — Departure">O Protocolo Chiron — A Partida</h2>
     <div class="book-card">
-      <div class="book-cover" aria-hidden="true">
-        <span class="bc-top" data-pt="O Protocolo Chiron" data-en="The Chiron Protocol">O Protocolo Chiron</span>
-        <span class="bc-title" data-pt="A Partida" data-en="Departure">A Partida</span>
-        <span class="bc-author">N. P. Lange</span>
+      <div class="book-cover">
+        <img class="cover-pt" src="images/cover-ptbr.jpg" alt="O Protocolo Chiron — A Partida">
+        <img class="cover-en" src="images/cover-eng.jpg" alt="The Chiron Protocol — Departure">
       </div>
       <div class="book-meta">
         <span class="subtitle" data-pt="Enfermeira. Sobrevivente. A última linha de defesa da Odyssey." data-en="Nurse. Survivor. The Odyssey's last line of defense.">Enfermeira. Sobrevivente. A última linha de defesa da Odyssey.</span>
